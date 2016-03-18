@@ -37,7 +37,7 @@ It's pretty straight-forward. The single method takes, as a parameter, an instan
 
 -  `message` - original log message
 -  `file` - full path to the file the log message came from
--  `filename` - name of the file the log message came from (without extension)
+-  `fileName` - name of the file the log message came from (without extension)
 -  `function` - method the log message came from
 -  `line` - line number in file where the log message came from
 -  `timestamp` - when the log message was executed
@@ -90,6 +90,10 @@ MyCustomFormatter.m
 @end
 ```
 
+Now, just add the custom formatter to your logger:
+```
+[DDTTYLogger sharedInstance].logFormatter = [[MyCustomFormatter alloc] init];
+```
 # Thread-safety (simple)
 
 Let's update our example formatter to also include the timestamp. To do this we'll use `NSDateFormatter`. But... `NSDateFormatter` is NOT thread-safe (unless you're targeting iOS 7+, or OSX 10.9+ with modern behavior on 64-bit architecture, see [NSDateFormatter](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSDateFormatter_Class/])). Does this pose any problems for us?
