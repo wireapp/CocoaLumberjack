@@ -768,10 +768,10 @@ unsigned long long const kDDDefaultLogFilesDiskQuota   = 20 * 1024 * 1024; // 20
     });
     #endif
 
-    uint64_t delay = (uint64_t)([logFileRollingDate timeIntervalSinceNow] * NSEC_PER_SEC);
+    uint64_t delay = (uint64_t)([logFileRollingDate timeIntervalSinceNow] * (NSTimeInterval) NSEC_PER_SEC);
     dispatch_time_t fireTime = dispatch_time(DISPATCH_TIME_NOW, delay);
 
-    dispatch_source_set_timer(_rollingTimer, fireTime, DISPATCH_TIME_FOREVER, 1.0);
+    dispatch_source_set_timer(_rollingTimer, fireTime, DISPATCH_TIME_FOREVER, 1ull * NSEC_PER_SEC);
     dispatch_resume(_rollingTimer);
 }
 
@@ -1107,7 +1107,7 @@ static int exception_count = 0;
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 - (NSDictionary *)fileAttributes {
-    if (_fileAttributes == nil) {
+    if (_fileAttributes == nil && filePath != nil) {
         _fileAttributes = [[NSFileManager defaultManager] attributesOfItemAtPath:filePath error:nil];
     }
 
@@ -1435,6 +1435,10 @@ static int exception_count = 0;
     }
 
     return NO;
+}
+
+-(NSUInteger)hash {
+    return [filePath hash];
 }
 
 - (NSComparisonResult)reverseCompareByCreationDate:(DDLogFileInfo *)another {
