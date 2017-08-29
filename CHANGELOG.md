@@ -1,3 +1,21 @@
+## [3.2.1 - Xcode 9 beta on Aug 21st, 2017](https://github.com/CocoaLumberjack/CocoaLumberjack/releases/tag/3.2.1)
+- Xcode 9 beta support #874 #873 #884 #883 #882
+- Fixed some issues around deleting log files #868 #879
+- update 'Use Log Level per Logger' doc #888
+- Remove empty asset catalogs so that they don't show up in Open Quickly #877
+- Fixed typo in pull request template #880
+
+## [3.2.0 - Swift 3.0.0, Xcode 8.3 on May 3rd, 2017](https://github.com/CocoaLumberjack/CocoaLumberjack/releases/tag/3.2.0)
+- Xcode 8.3 support #860 #853 
+- added a very basic `os_log` (unified logging) logger #850 #856 
+- Use `NSFileProtectionType` instead of `NSString` #866
+- Optimized timestamp calculation in `DDTTYLogger` #851 
+- Updated docs #864
+- Fix Travis #863 
+- Fixed nullability of `DDLogMessage.function` #849 `DDExtractFileNameWithoutExtension` #845 
+- Ignore `Carthage/Build` directory #862 
+- Updated schemes #859 #857
+
 ## [3.1.0 - Swift 3.0.1, Xcode 8.1 on Feb 22nd, 2017](https://github.com/CocoaLumberjack/CocoaLumberjack/releases/tag/3.1.0)
 - Swift 3.0.1 and Xcode 8.1 support via #816
 - Fix Carthage build and updated the podspec structure #819 #818 #784 #790 #782 #778 #815
